@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/tool"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd">
+
+    <!-- Explicit Dependency Injection-->
+<!--    <bean id="student" class="com.demo.Student">-->
+<!--        <constructor-arg name="name" value="John"></constructor-arg>-->
+<!--        <constructor-arg name="age" value="23"></constructor-arg>-->
+<!--        <constructor-arg name="school" value="ISM"></constructor-arg>-->
+<!--        <property name="address" ref="address"></property>-->
+<!--    </bean>-->
+<!--    <bean id="address" class="com.demo.Address" />-->
+
+<!-- Implicit Dependency Injection-->
+<!--    <bean id="student" class="com.demo.Student" autowire="byType">-->
+<!--        <constructor-arg name="name" value="John"></constructor-arg>-->
+<!--        <constructor-arg name="age" value="23"></constructor-arg>-->
+<!--        <constructor-arg name="school" value="ISM"></constructor-arg>-->
+<!--    </bean>-->
+<!--    <bean id="address" class="com.demo.Address" />-->
+
+    <!-- Component Scan-->
+<!--    <context:annotation-config></context:annotation-config>-->
+<!--    <context:component-scan base-package="com.demo"/>-->
+
+</beans>
