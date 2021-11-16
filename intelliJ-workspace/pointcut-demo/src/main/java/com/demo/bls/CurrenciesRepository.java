@@ -6,6 +6,5 @@ import org.springframework.stereotype.Component;
 public interface CurrenciesRepository {
 
     int getCurrenciesCount();
-    void greet();
 
 }

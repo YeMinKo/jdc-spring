@@ -1,10 +1,8 @@
 package com.demo.aspects;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -14,19 +12,51 @@ import java.util.Arrays;
 public class CurrencyServiceAspect {
 
     @Pointcut("@annotation(com.demo.annotations.InTransaction)")
-    public void transactionAnnotationPointcut() {
-    }
+    public void transactionAnnotationPointcut() {}
 
     @Pointcut("within(com.demo.bls.*)")
-    public void blsPackagePointcut() {
-    }
+    public void blsPackagePointcut() {}
 
     @Pointcut("@within(com.demo.annotations.Secured)")
-    public void securedClassPointcut() {
-    }
+    public void securedClassPointcut() {}
 
     @Pointcut("bean(currency_service)")
-    public void namedBeanPointcut(){
+    public void namedBeanPointcut(){}
+
+
+    @Pointcut("execution(* com.demo.bls.CurrencyService.getExchangeRate(..))")
+    public void getExchangeRateMethodPointcut() {}
+
+    @Pointcut("args(String, String, int)")
+    public void stringAndIntegerArgumentsMethodPointcut() {}
+
+    @Pointcut("@args(com.demo.annotations.Validated)")
+    public void validateArgumentPointcut() {}
+
+    @Pointcut("@target(com.demo.annotations.Secured)")
+    public void currencyServiceSecuredTargetPointcut() {}
+
+    @Pointcut("blsPackagePointcut() && transactionAnnotationPointcut()")
+    public void blsPackageAndInTransactionPointcut() {}
+
+//    @After("currencyServiceSecuredTargetPointcut()")
+    public void afterCurrencyServiceSecuredTarget(JoinPoint joinPoint) {
+        System.out.println(" afterCurrencyServiceSecuredTarget: " + joinPoint.getSignature() + " is invoked with : " + Arrays.toString(joinPoint.getArgs()));
+    }
+
+//    @After("blsPackageAndInTransactionPointcut()")
+    public void afterBlsPackageAndInTransactionAdvice(JoinPoint joinPoint) {
+        System.out.println(" afterBlsPackageAndInTransactionAdvice: " + joinPoint.getSignature() + " is invoked with : " + Arrays.toString(joinPoint.getArgs()));
+    }
+
+//    @After("stringAndIntegerArgumentsMethodPointcut()")
+    public void afterStringAndIntegerArgumentsMethodAdvice(JoinPoint joinPoint) {
+        System.out.println(" afterStringAndIntegerArgumentsMethodAdvice: " + joinPoint.getSignature() + " is invoked with : " + Arrays.toString(joinPoint.getArgs()));
+    }
+
+//    @After("validateArgumentPointcut()")
+    public void afterValidatedArgumentAdvice(JoinPoint joinPoint) {
+        System.out.println(" afterValidatedArgumentAdvice: " + joinPoint.getSignature() + " is invoked with : " + Arrays.toString(joinPoint.getArgs()));
     }
 
 //    @Before("transactionAnnotationPointcut()")
@@ -49,4 +79,24 @@ public class CurrencyServiceAspect {
         System.out.println(" afterNamedBeanAdvice: " + joinPoint.getSignature() + " is invoked with : " + Arrays.toString(joinPoint.getArgs()));
     }
 
+//    @Around("getExchangeRateMethodPointcut()")
+    public Object aroundGetExchangeRateMethodAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
+        try {
+            System.out.println("Before:::aroundGetExchangeRateMethodAdvice" + proceedingJoinPoint.getSignature());
+            return proceedingJoinPoint.proceed();
+        }  finally {
+            System.out.println("After:::aroundGetExchangeRateMethodAdvice");
+        }
+
+    }
+
+//    @AfterThrowing(value = "execution(* com.demo.bls.CurrencyService.getCurrencyCountryName(..))", throwing = "exception")
+    public void afterThrowingException(Exception exception) {
+        System.out.println("Exception was thrown from getCurrencyCounctyName: " + exception.getClass().getSimpleName());
+    }
+
+//    @AfterReturning(value = "execution(* com.demo.bls.CurrencyService.getCurrencyCountryName(..))", returning = "value")
+    public void afterReturningAdvice(String value) {
+        System.out.println("Value returned from getCurrencyCountryName: " + value);
+    }
 }

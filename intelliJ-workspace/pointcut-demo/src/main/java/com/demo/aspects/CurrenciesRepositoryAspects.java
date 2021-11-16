@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class CurrenciesRepositoryAspects {
 
-//    @Before("this(com.demo.bls.CurrenciesRepositoryImpl)")
+    @Before("this(com.demo.bls.CurrenciesRepositoryImpl)")
     public void beforeThisCurrenciesRepository(JoinPoint joinPoint) {
         System.out.println("Before - this(CurrenciesRepositoryImpl) is invoked ::" + joinPoint.getSignature());
     }

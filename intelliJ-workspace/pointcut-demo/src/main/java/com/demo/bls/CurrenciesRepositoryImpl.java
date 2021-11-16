@@ -9,9 +9,4 @@ public class CurrenciesRepositoryImpl implements CurrenciesRepository {
     public int getCurrenciesCount() {
         return 0;
     }
-
-    @Override
-    public void greet() {
-        System.out.println("Hello!");
-    }
 }

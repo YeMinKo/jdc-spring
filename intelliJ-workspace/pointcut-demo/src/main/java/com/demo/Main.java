@@ -13,7 +13,6 @@ public class Main {
 
         CurrenciesRepository currenciesRepository = context.getBean(CurrenciesRepository.class);
         currenciesRepository.getCurrenciesCount();
-        currenciesRepository.greet();
 
         AlternativeCurrenciesRepository alternativeCurrenciesRepository = context.getBean(AlternativeCurrenciesRepository.class);
         alternativeCurrenciesRepository.getCurrenciesCount();

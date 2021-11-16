@@ -14,7 +14,6 @@ public class CurrencyService {
         return 0f;
     }
 
-    @InTransaction
     public float getExchangeRate(String fromm, String to, int mutiplier) {
         return 0f;
     }
