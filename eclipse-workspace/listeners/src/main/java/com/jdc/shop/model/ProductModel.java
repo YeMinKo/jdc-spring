@@ -18,4 +18,12 @@ public class ProductModel {
 	public List<Product> getList() {
 		return new ArrayList<>(list);
 	}
+
+	public Product findById(int id) {
+		for (Product p : list) {
+			if (p.getId() == id)
+				return p;
+		}
+		return null;
+	}
 }

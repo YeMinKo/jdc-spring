@@ -14,12 +14,14 @@
 	<%
 	ProductModel model = (ProductModel) application.getAttribute("products");
 	%>
-	<table>
+	<table style="width: 60%">
 		<tr>
-			<th>ID</th>
-			<th>Category</th>
-			<th>Name</th>
-			<th>Price</th>
+			<td>ID</td>
+			<td>Category</td>
+			<td>Name</td>
+			<td>Price</td>
+			<td>Add</td>
+			
 		</tr>
 
 		<%
@@ -32,6 +34,9 @@
 			<td><%=p.getCategory()%></td>
 			<td><%=p.getName()%></td>
 			<td><%=p.getPrice()%></td>
+			<td>
+				<a href="cart-add?product=<%=p.getId() %>">Add To Cart</a>
+			</td>
 		</tr>
 
 		<%

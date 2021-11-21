@@ -17,9 +17,6 @@ public class ProductLoader implements ServletContextListener {
 		// Create Product Model
 		var model = new ProductModel();
 
-		// Add Product Model to Application Scope
-		sce.getServletContext().setAttribute("products", model);
-
 		// Read File
 		String filePath = sce.getServletContext().getRealPath("/WEB-INF/product.txt");
 
@@ -34,5 +31,8 @@ public class ProductLoader implements ServletContextListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		// Add Product Model to Application Scope
+		sce.getServletContext().setAttribute("products", model);
 	}
 }
