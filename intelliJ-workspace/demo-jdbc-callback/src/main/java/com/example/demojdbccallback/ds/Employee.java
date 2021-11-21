@@ -1,4 +1,4 @@
-package com.demo.ds;
+package com.example.demojdbccallback.ds;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
