@@ -3,6 +3,8 @@ package com.jdc.shop.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jdc.shop.model.entity.Product;
+
 public class ProductModel {
 	private List<Product> list;
 

@@ -1,4 +1,5 @@
-<%@page import="com.jdc.shop.model.Product"%>
+<%@page import="com.jdc.shop.model.ShoppingCart"%>
+<%@page import="com.jdc.shop.model.entity.Product"%>
 <%@page import="com.jdc.shop.model.ProductModel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -11,6 +12,25 @@
 <body>
 
 	<h1>Product List</h1>
+	
+	<p>
+		Shopping Cart : 
+		<a href="cart-show">
+			<% ShoppingCart cart = (ShoppingCart) session.getAttribute("cart"); %>
+			<%=null == cart ? 0 : cart.itemCount() %>	
+		</a>
+	</p>
+	
+	<p>
+		<%
+			if(null !=cart && cart.itemCount() > 0) {
+				%>
+				<a href="cart-clear">Clear Cart</a>
+				<%
+			}
+		%>
+	</p>
+	
 	<%
 	ProductModel model = (ProductModel) application.getAttribute("products");
 	%>

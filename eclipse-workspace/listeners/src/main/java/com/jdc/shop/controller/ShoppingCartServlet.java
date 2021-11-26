@@ -2,9 +2,9 @@ package com.jdc.shop.controller;
 
 import java.io.IOException;
 
-import com.jdc.shop.model.Product;
 import com.jdc.shop.model.ProductModel;
 import com.jdc.shop.model.ShoppingCart;
+import com.jdc.shop.model.entity.Product;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,12 +24,30 @@ public class ShoppingCartServlet extends HttpServlet {
 			addToCart(req, resp);
 			break;
 		case "/cart-show":
+			getServletContext().getRequestDispatcher("/my-cart.jsp").forward(req, resp);
 			break;
 		case "/cart-clear":
+			clear(req, resp);
 			break;
 		default:
 			break;
 		}
+	}
+
+	private void clear(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		// get session
+		var session = req.getSession();
+
+		// get shopping cart
+		if (null != session) {
+			var cart = (ShoppingCart) session.getAttribute("cart");
+			// clear cart
+			cart.clear();
+		}
+
+		// forward to index.jsp
+		getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 
 	private void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,7 +55,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		var strId = req.getParameter("product");
 
 		// get product model from application scope
-		var productModel = (ProductModel) getServletContext().getAttribute("product");
+		var productModel = (ProductModel) getServletContext().getAttribute("products");
 
 		// find product from model by id
 		Product product = productModel.findById(Integer.parseInt(strId));

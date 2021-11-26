@@ -3,8 +3,8 @@ package com.jdc.shop.listener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-import com.jdc.shop.model.Product;
 import com.jdc.shop.model.ProductModel;
+import com.jdc.shop.model.entity.Product;
 
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
