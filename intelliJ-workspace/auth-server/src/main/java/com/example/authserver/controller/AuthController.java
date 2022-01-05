@@ -28,8 +28,8 @@ public class AuthController {
         userService.auth(user);
     }
 
-    //curl -v -XPOST -H "Content-Type:application/json" -d '{"username":"john", "code":"6319"}' http://localhost:8080/user/check
-    @PostMapping("/user/check")
+    //curl -v -XPOST -H "Content-Type:application/json" -d '{"username":"john", "code":"6319"}' http://localhost:8080/otp/check
+    @PostMapping("/otp/check")
     public void check(@RequestBody Otp otp, HttpServletResponse response) {
         if(userService.check(otp)) {
             response.setStatus(HttpServletResponse.SC_OK);
