@@ -1,5 +1,6 @@
 package com.example.springsecuritymodel.security.annotations;
 
+
 import org.springframework.security.access.annotation.Secured;
 
 import java.lang.annotation.ElementType;
@@ -9,6 +10,7 @@ import java.lang.annotation.Target;
 
 import static com.example.springsecuritymodel.security.SecurityRoles.ROLE_PREFIX;
 import static com.example.springsecuritymodel.security.SecurityRoles.SUPER_ADMIN;
+
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

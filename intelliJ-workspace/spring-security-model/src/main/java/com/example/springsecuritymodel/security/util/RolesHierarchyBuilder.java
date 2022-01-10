@@ -2,14 +2,15 @@ package com.example.springsecuritymodel.security.util;
 
 public class RolesHierarchyBuilder {
 
-    private StringBuilder stringBuilder = new StringBuilder();
+    private StringBuilder stringBuilder=new StringBuilder();
 
-    public RolesHierarchyBuilder append(String uplineRole, String downlineRole) {
-        stringBuilder.append(String.format("ROLE_%s > ROLE_%s\n", uplineRole, downlineRole));
+    public RolesHierarchyBuilder append(String uplineRole,String downlineRole){
+        stringBuilder.append(String.format("ROLE_%s > ROLE_%s\n",uplineRole,downlineRole));
         return this;
     }
 
-    public String build() {
+    public String build(){
         return stringBuilder.toString();
     }
+
 }

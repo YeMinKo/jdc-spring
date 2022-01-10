@@ -9,16 +9,17 @@ import org.springframework.security.access.vote.RoleHierarchyVoter;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 
+
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class GlobalMethodSecurityConfig extends GlobalMethodSecurityConfiguration {
-
     @Autowired
     private RoleHierarchy roleHierarchy;
 
+
     @Override
     protected AccessDecisionManager accessDecisionManager() {
-        AffirmativeBased affirmativeBased = (AffirmativeBased) super.accessDecisionManager();
+        AffirmativeBased affirmativeBased=(AffirmativeBased) super.accessDecisionManager();
         affirmativeBased.getDecisionVoters().add(new RoleHierarchyVoter(roleHierarchy));
         return affirmativeBased;
     }

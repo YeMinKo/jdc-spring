@@ -1,5 +1,6 @@
 package com.example.springsecuritymodel.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -12,29 +13,31 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 public class Customer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotBlank(message = "Code cannot be empty")
-    @Size(min = 2, max = 5, message = "Code must have length of 2 - 5 characters")
-    @Pattern(regexp = "[A-Za-z]*", message = "Code contains illegal characters")
+    @Size(min = 2,max=5,message = "Code must have length of 2 - 5 characters")
+    @Pattern(regexp = "[A-Za-z]*",message = "Code contains illegal characters")
     private String code;
 
     @NotBlank(message = "First name cannot be empty")
-    @Pattern(regexp = "[A-Za-z-']*", message = "First name contains illegal characters")
+    @Pattern(regexp = "[A-Za-z-']*",message = "First name contains illegal characters")
     @Column(name = "first_name")
     private String firstName;
 
     @NotBlank(message = "Last name cannot be empty")
-    @Pattern(regexp = "[A-Za-z-']*", message = "Last name contains illegal characters")
-    @Column(name = "last_name")
+    @Pattern(regexp = "[A-Za-z-']*",message = "Last name contains illegal characters")
+    @Column(name="last_name")
     private String lastName;
 
     @NotBlank(message = "Address cannot be empty")
-    @Pattern( regexp = "[\\W .\\-/,]*", message = "Address contains illegal characters")
+    @Pattern(regexp = "[\\w .\\-/,]*",message = "Address contains illegal characters")
     private String address;
 
-    public Customer() {}
+
+    public Customer(){
+
+    }
 }

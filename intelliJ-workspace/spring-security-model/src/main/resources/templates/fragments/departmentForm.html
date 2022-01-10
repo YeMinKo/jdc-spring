@@ -7,7 +7,7 @@
         <div class="col-md-4 mb-3">
             <label for="code">Code</label>
             <input type="text" class="form-control" id="code" th:field="*{code}"
-                   th:classappend="${#fields.hasErrors('code')} ? 'is-invalid'">
+                th:classappend="${#fields.hasErrors('code')} ? 'is-invalid'">
             <div class="invalid-feedback" th:errors="*{code}"></div>
         </div>
 
@@ -24,14 +24,14 @@
                    th:classappend="${#fields.hasErrors('country')} ? 'is-invalid'">
             <div class="invalid-feedback" th:errors="*{country}"></div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-1">
-                <a href="#" th:href="@{/departments}" class="btn btn-outline-secondary">Cancel</a>
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-primary btn-block" type="submit">Add</button>
-            </div>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="#" th:href="@{/departments}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-block" type="submit">Add</button>
         </div>
     </div>
 </form>

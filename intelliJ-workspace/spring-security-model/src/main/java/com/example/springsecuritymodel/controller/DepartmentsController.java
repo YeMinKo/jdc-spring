@@ -1,8 +1,10 @@
 package com.example.springsecuritymodel.controller;
 
+
 import com.example.springsecuritymodel.dao.DepartmentsDao;
 import com.example.springsecuritymodel.entities.Department;
-import com.example.springsecuritymodel.security.annotations.customers.IsCustomersCreate;
+import com.example.springsecuritymodel.security.annotations.cutomers.IsCustomersDelete;
+import com.example.springsecuritymodel.security.annotations.departments.IsDepartmentsCreate;
 import com.example.springsecuritymodel.security.annotations.departments.IsDepartmentsDelete;
 import com.example.springsecuritymodel.security.annotations.departments.IsDepartmentsRead;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,30 +26,30 @@ public class DepartmentsController {
 
     @IsDepartmentsRead
     @GetMapping("/departments")
-    public ModelAndView index() {
-        return new ModelAndView("departments", "departments", departmentsDao.findAll());
+    public ModelAndView index(){
+        return new ModelAndView("departments","departments",departmentsDao.findAll());
     }
 
-    @IsCustomersCreate
+    @IsDepartmentsCreate
     @GetMapping("/departments/create")
-    public ModelAndView create() {
-        return new ModelAndView("department-create", "department", new Department());
+    public ModelAndView create(){
+        return new ModelAndView("department-create","department",new Department());
     }
 
-    @IsCustomersCreate
+    @IsDepartmentsCreate
     @PostMapping("/departments/create")
     public String create(@ModelAttribute @Valid Department department, BindingResult bindingResult){
-        if(bindingResult.hasErrors()) {
+        if(bindingResult.hasErrors()){
             return "department-create";
-        } else {
+        }
+        else{
             departmentsDao.save(department);
         }
         return "redirect:/departments";
     }
-
     @IsDepartmentsDelete
     @GetMapping("/departments/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    public String delete(@PathVariable Integer id){
         departmentsDao.deleteById(id);
         return "redirect:/departments";
     }
