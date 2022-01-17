@@ -1,11 +1,19 @@
 package com.example.csrfdemo.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
+
+    private static Logger logger = LoggerFactory.getLogger(TestController.class);
+
+    @Value("${test.hello}")
+    private String test;
 
     @PostMapping("/a")
     public String postEndPointA(){
@@ -14,6 +22,7 @@ public class TestController {
 
     @GetMapping("/a")
     public String getEndPointA(){
+        logger.info("TEST: " + test);
         return "Works";
     }
 
