@@ -17,9 +17,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "Code cannot be empty")
-    @Size(min = 2,max=5,message = "Code must have length of 2 - 5 characters")
-    @Pattern(regexp = "[A-Za-z]*",message = "Code contains illegal characters")
+    @NotBlank(message = "{customer.name.validator.notblank}")
+    @Size(min = 2,max=5,message = "{customer.name.validator.msg}")
+    @Pattern(regexp = "[A-Za-z]*",message = "{customer.name.validator.msg}")
     private String code;
 
     @NotBlank(message = "First name cannot be empty")
