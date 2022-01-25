@@ -1,0 +1,2 @@
+insert into address(id, address_name, street_number, street_name, apt_number, city, state, zip_code) values (1, 'Home Address', 3992, 'Buffalo Creek Road', 12, 'New York', 'NY', '47324');
+insert into address(id, address_name, street_number, street_name, apt_number, city, state, zip_code) values (2, 'Business Address', 3992, 'Mountain Creek Road', 12, 'Northampton', 'NT', '35732');
